@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Node.js School Test Task</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="formContainer">
+            <form id="myForm" class="form-container">
+                <h1 class="form-title">Регистрация</h1>
+                <div class="form-container-group">
+                    <label class="form-container__label" for="fio">ФИО</label>
+                    <div class="form-container__input-field">
+                        <input type="text" id="fio" placeholder="Пупкин Василий Васильевич">
+                    </div>
+                </div>
+                <div class="form-container-group">
+                    <label class="form-container__label" for="email">Email</label>
+                    <div class="form-container__input-field">
+                        <input type="text" id="email" placeholder="mail@yandex.ru, @ya.ru, @yandex.ua, @yandex.by, @yandex.kz, @yandex.com">
+                    </div>
+                </div>
+                <div class="form-container-group">
+                    <label class="form-container__label" for="phone">Телефон</label>
+                    <div class="form-container__input-field">
+                        <input type="text" id="phone" placeholder="+7(ххх)ххх-хх-хх">
+                    </div>
+                </div>
+                <button id="submitButton" class="form-container__submit" type="submit">Отправить</button>
+            </form>
+        </div>
+        <div id="resultContainer"></div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
