@@ -26,11 +26,11 @@
 .form-container__input-field  input{
     width: 520px;
 }
-#submitButton {
+.form-container__submit {
     width: 620px;
     margin: 10px 0;
 }
-#resultContainer {
+.serverResponse {
     width: 620px;
     margin-top: 20px; 
     background: rgb(250, 255, 189);

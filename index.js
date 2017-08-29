@@ -1,9 +1,4 @@
-function handleForm(event) { 
-	event.preventDefault(); 
-} 
-document.getElementById('myForm').addEventListener('submit', handleForm);
-
-var myForm = class {
+class FormClass {
     constructor(validate, getData) {
         this.data = this.getData();
         this.dataRegExp = {
@@ -41,7 +36,7 @@ var myForm = class {
             phone: this._extraValidatePhoneData(this.dataRegExp.phone, this.data.phone),
         };
         for (let key in isDataValid) {
-            isDataValid[key] ? this._validDataHandle(key) : this._NOTValidDataHandle(valid, key);
+            isDataValid[key] ? this._validDataHandle(key) : this._notValidDataHandle(valid, key);
         };
         return valid;
     }
@@ -66,7 +61,7 @@ var myForm = class {
         document.getElementById(key).classList.add('success'); 
     }
 
-    _NOTValidDataHandle(valid, key) {
+    _notValidDataHandle(valid, key) {
         valid.isValid = false; 
         valid.errorFields.push(key);
         document.getElementById(key).classList.add('error'); 
@@ -96,18 +91,18 @@ var myForm = class {
         }); 
     }
 
-    saveDataInLocalStorage ()  {
-        let dataObj = localStorage.getItem('data');
+    static saveDataInLocalStorage ()  {
+        let dataObj = localStorage.getItem('dataFromForm');
         dataObj == null ? dataObj= {} : dataObj = JSON.parse(dataObj);
         let inputs = document.getElementsByTagName('input');
         [...inputs].forEach( (item) => {
             item.addEventListener('blur', function () { 
                 dataObj[this.id]= this.value;
-                localStorage.setItem('data', JSON.stringify(dataObj));
+                localStorage.setItem('dataFromForm', JSON.stringify(dataObj));
             }, true);
         })
     }
-    setData(data) {
+    static  setData(data) {
         for (let key in data) {
             document.getElementById(key).value = data[key];
         }
@@ -116,17 +111,18 @@ var myForm = class {
 
 
 document.getElementById('submitButton').onclick = ()=>{
-    let newForm = new myForm();
-    newForm.submit();
-    console.log(newForm);    
+    event.preventDefault(); 
+    window.MyForm = new FormClass();
+    MyForm.submit();
+    console.log(MyForm);    
 }
 
 window.onload = () => {
-    if (localStorage.length) {
-        let data = JSON.parse(localStorage.getItem('data'));
-        new myForm().setData(data);
+    if (localStorage.dataFromForm) {
+        let data = JSON.parse(localStorage.getItem('dataFromForm'));
+        FormClass.setData(data);
     };
-    new myForm().saveDataInLocalStorage();
+    FormClass.saveDataInLocalStorage();
 }
 
 
