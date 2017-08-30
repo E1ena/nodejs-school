@@ -110,7 +110,7 @@ class FormClass {
 }
 
 
-document.getElementById('submitButton').onclick = ()=>{
+document.getElementById('submitButton').onclick = (event)=>{
     event.preventDefault(); 
     window.MyForm = new FormClass();
     MyForm.submit();
